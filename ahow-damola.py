@@ -8,8 +8,8 @@ from selenium.webdriver.chrome.options import Options
 
 #for the podcast
 
-def rename():
-    return null
+#def rename():
+#    return null
 
 def audiojoiner():
     driver = webdriver.Chrome(r'C:\Users\Media\Desktop\webdriver\chromedriver.exe')
@@ -17,8 +17,8 @@ def audiojoiner():
     driver.find_elements_by_class_name('file-input').send_keys('H:\\New Chruch\Podcast Intro Revised MP3.mp3')
     return driver
 
-def studio():
-    return null
+#def studio():
+#return null
     
 
 
