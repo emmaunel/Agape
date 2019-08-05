@@ -6,20 +6,22 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 
-#for the podcast
+"""
+def rename():
+    return null
+"""
+driver = webdriver.Chrome(
+    executable_path=r"C:\\Users\Damola Olugboji\Desktop\Projects\foder\chromedriver.exe"
+)
+driver.get("https://audio-joiner.com/")
+# add path to podcast intro
+pathtointro = r"C:\\Users\Damola Olugboji\Desktop\Projects\foder\mak.mp3"
+# path to message should be the same as the path to the rename file
+# pathtomessage =
+driver.find_element_by_class_name("file-input").send_keys(pathtointro)
+driver.find_element_by_class_name("btn-save").click()
 
-#def rename():
-#    return null
+time.sleep(60)
+for a in driver.find_elements_by_xpath(".//a"):
+    print(a.get_attribute("href"))
 
-def audiojoiner():
-    driver = webdriver.Chrome(r'C:\Users\Media\Desktop\webdriver\chromedriver.exe')
-    driver.get('https://audio-joiner.com/')
-    driver.find_elements_by_class_name('file-input').send_keys('H:\\New Chruch\Podcast Intro Revised MP3.mp3')
-    return driver
-
-#def studio():
-#return null
-    
-
-
-driver = audiojoiner()
