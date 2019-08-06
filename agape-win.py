@@ -47,18 +47,30 @@ def merger(drive, current, new):
     link = download_btn.get_attribute('href')
     print("The url is  " + link)
     time.sleep(5)
-    download(link, new)
+    return download(link, new)
 
 
 def download(link, new):
     print('Beginning file download with wget module')
-    print("Download location: " + mp3_location +  week_location + new + '.mp3')
-    wget.download(link, mp3_location +  week_location +  new + '.mp3')
+    new_location = mp3_location + week_location + new + file_extention
+    print("Download location: " + new_location)
+    wget.download(link, new_location)
     print('Closing in 10 seconds....')
     # TODO: show a countdown
+    return new_location
 
 
-def userInput():
+def uploaded(drive, file):
+    drive.get('https://agapehousenj.sermonstudio.net/login')
+    time.sleep(3)
+    # TODO: Test login creds
+    login_btn = drive.find_element_by_class_name('submit_img')
+    login_btn.click()
+    time.sleep(3)
+
+
+
+def userinput():
     # TODO Validate it: if the user enters the extenstion, remove it
     # TODO: Check if a file exist or not
     current_file = input("Enter the name of the message(R_20190804-100106): ")
@@ -70,7 +82,7 @@ def userInput():
     if not os.path.isfile(temp_file):
         print("ERROR: File doesn't exit")
         exit(0)
-    # removes it from memory, i think
+    # removes it from memory
     del temp_file
 
     new_file = input("What should the new file be named?(August 4th)")
@@ -79,10 +91,11 @@ def userInput():
 
 def main():
     drive = driver()
-    current, new = userInput()
+    current, new = userinput()
     # Merger
-    merger(drive, current, new)
+    new_location = merger(drive, current, new)
     # Uploader
+    uploaded(drive, new_location)
 
 
 if __name__ == '__main__':
