@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import Select
-# for now - new series/speakers need to be inputted automatically
+# for now - new series/speakers need to be inputted manually
 
 
 """
