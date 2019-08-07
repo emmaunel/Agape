@@ -34,8 +34,9 @@ def studio():
     titlebox.send_keys(title)
     add = driver.find_element_by_name("create_new_posting")
     add.click()
+    #add section to open the categories box
 
-    el = driver.find_element_by_name("speaker")
+    """el = driver.find_element_by_name("speaker")
     for option in el.driver.find_element_by_tag_name("option"):
         if option.text == "1":
             option.text = "217711"
@@ -56,7 +57,7 @@ def studio():
         elif option.text == "8":
             print("okay")
         elif option.text == "9":
-            print("okay")
+            print("okay")"""
 
     chrome_options.add_experimental_option("detach", True)
 
