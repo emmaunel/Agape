@@ -5,6 +5,8 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import Select
+# for now - new series/speakers need to be inputted automatically
 
 
 """
@@ -21,6 +23,9 @@ def studio():
     )
     speaker = input("enter the number associated with the speaker ")
 
+    '''if input == '9':
+        newspeaker = input("enter the new speaker name ")'''
+
     driver = webdriver.Chrome(
         executable_path=r"C:\\Users\Damola Olugboji\Desktop\Projects\foder\chromedriver.exe"
     )
@@ -34,30 +39,30 @@ def studio():
     titlebox.send_keys(title)
     add = driver.find_element_by_name("create_new_posting")
     add.click()
-    #add section to open the categories box
-
-    """el = driver.find_element_by_name("speaker")
-    for option in el.driver.find_element_by_tag_name("option"):
-        if option.text == "1":
-            option.text = "217711"
-            option.click()
-            break
-        elif option.text == "2":
-            print("okay")
-        elif option.text == "3":
-            print("okay")
-        elif option.text == "4":
-            print("okay")
-        elif option.text == "5":
-            print("okay")
-        elif option.text == "6":
-            print("okay")
-        elif option.text == "7":
-            print("okay")
-        elif option.text == "8":
-            print("okay")
-        elif option.text == "9":
-            print("okay")"""
+    time.sleep(10)
+    if speaker == '1':
+        Select(driver.find_element_by_xpath('//*[@id="speaker"]')).select_by_value('217711')#Ade Adedji
+    elif speaker == '2':
+        Select(driver.find_element_by_xpath('//*[@id="speaker"]')).select_by_value('226163')#Kip Wright
+    elif speaker == '3':
+        Select(driver.find_element_by_xpath('//*[@id="speaker"]')).select_by_value('216941')#Tunde Odeyemi
+    elif speaker == '4':
+        Select(driver.find_element_by_xpath('//*[@id="speaker"]')).select_by_value('215248')#Tunji Olatubosun
+    elif speaker == '5':
+        Select(driver.find_element_by_xpath('//*[@id="speaker"]')).select_by_value('229403')#Genevieve Kumapley
+    elif speaker == '6':
+        Select(driver.find_element_by_xpath('//*[@id="speaker"]')).select_by_value('213970')#Tunde Olugboji
+    elif speaker == '7':
+        Select(driver.find_element_by_xpath('//*[@id="speaker"]')).select_by_value('213972')#Bimbola Lawore 
+    elif speaker == '8':
+        Select(driver.find_element_by_xpath('//*[@id="speaker"]')).select_by_value('213971')#Jide Lawore
+    '''elif speaker == '9':
+        driver.execute_script("window.open('about:blank', 'tab2');")
+        driver.switch_to.window("tab2")
+        driver.get('https://agapehousenj.sermonstudio.net/posting/speaker_edit_view')
+        driver.find_element_by_name('title').send_keys(newspeaker)
+        driver.find_element_by_id('createSeries').click()'''#need to figure a better way to input new speaker
+        
 
     chrome_options.add_experimental_option("detach", True)
 
@@ -91,6 +96,16 @@ def audiojoiner():
 
 
 audiojoiner()
+
+
+
+
+
+
+
+
+
+
 """
 217711
 Deacon Ade Adedji
