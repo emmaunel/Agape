@@ -1,6 +1,5 @@
-
-
-switcher = {
+def month(i):
+    switcher = {
         1: "January",
         2: "February",
         3: "March",
@@ -12,5 +11,8 @@ switcher = {
         9: "September",
         10: "October",
         11: "November",
-        12: "December"
-}
+        12: "December",
+    }
+    return switcher.get(i,"invalid ")
+
+month(2)
