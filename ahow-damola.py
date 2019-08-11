@@ -1,6 +1,7 @@
 import os
 import sys
 import time
+import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -8,11 +9,13 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import Select
 # for now - new series/speakers need to be inputted manually
 
-
-"""
-def rename():
-    return null
-"""
+os.chdir(r'C:\Users\Media\Desktop\sermon auto')
+for f in os.listdir():
+    str1 = str(now.year)
+    str2 = str(now.month)
+    str3 = str(now.day)
+    date = (str2 + "-"+ str3 +"-"+ str1 + ".mp3")
+    os.rename(f, date)
 
 
 def studio():
@@ -28,7 +31,8 @@ def studio():
     v1 = input("enter the first verse")
     v2 = input("enter the last verse")
 
-    driver = webdriver.Chrome(executable_path=r"C:\\Users\Damola Olugboji\Desktop\Projects\foder\chromedriver.exe")
+    driver = webdriver.Chrome(executable_path=r"C:\Users\Media\Desktop\webdriver\chromedriver.exe"
+    )
     driver.get("https://agapehousenj.sermonstudio.net/login")
     identity = driver.find_element_by_id("identity")
     identity.send_keys("admin@agapehousenj.org")
@@ -206,12 +210,12 @@ def studio():
 
 def audiojoiner():
     driver = webdriver.Chrome(
-        executable_path=r"C:\\Users\Damola Olugboji\Desktop\Projects\foder\chromedriver.exe"
+        executable_path=r"C:\Users\Media\Desktop\webdriver\chromedriver.exe"
     )
     driver.get("https://audio-joiner.com/")
-    pathtointro = (
-        r"C:\\Users\Damola Olugboji\Desktop\Projects\foder\shotty.mp3"
-    )  # path to podcast intro
+    pathtointro = (r"H:\New Chruch\Podcast Intro Revised MP3.mp3")  # path to podcast intro
+    pathtosermon = (r"C:\Users\Media\Desktop\sermon auto\" + date)
+    print (pathtosermon)
     driver.find_element_by_class_name("file-input").send_keys(pathtointro)
     driver.find_element_by_class_name("btn-save").click()
     # need to add path to message
@@ -230,7 +234,6 @@ def audiojoiner():
                 driver.get(rlink)
                 break
     studio()
-
 
 audiojoiner()
 
